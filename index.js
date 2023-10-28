@@ -1,17 +1,9 @@
 const express=require('express')
-const port=8000;
-const mongoose=require('mongoose')
+const port=process.env.PORT || 8000;
 const app=express()
 
 // db configuration
-mongoose.connect('mongodb://0.0.0.0:27017/pollPract')
-const db=mongoose.connection
-db.on('error',()=>{
-    console.log("error in db connection")
-})
-db.once('open',()=>{
-    console.log("server is connected to the database")
-})
+const db=require('./configs/mongoose')
 
 
 // routing configuration
